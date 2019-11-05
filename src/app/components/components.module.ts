@@ -12,7 +12,6 @@ import { NgModule } from '@angular/core';
 
 })
 export class ComponentsModule {
-    // Padrão: "https://eye-t.net.br/api/",  com "/" no final.
     // private static url = 'http://localhost/web/eye-t.net/api/';
     private static url = 'https://eye-t.net.br/api/';
 
