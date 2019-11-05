@@ -28,6 +28,8 @@
     "cordova": "^9.0.0",
     "cordova-android": "^8.1.0",
     "cordova-ios": "^5.0.1",
+    "cordova-plugin-ionic": "^5.4.5",
+    "cordova-plugin-whitelist": "^1.3.4",
     "cordova-sqlite-storage": "^3.3.0",
     "core-js": "^2.5.4",
     "karma-webpack": "^4.0.2",
@@ -78,7 +80,15 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-sqlite-storage": {}
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-ionic": {
+        "APP_ID": "d735ae3f",
+        "CHANNEL_NAME": "master",
+        "UPDATE_METHOD": "background",
+        "MAX_STORE": "2",
+        "MIN_BACKGROUND_DURATION": "30",
+        "UPDATE_API": "https://api.ionicjs.com"
+      }
     },
     "platforms": [
       "android",
