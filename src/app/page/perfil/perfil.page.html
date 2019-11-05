@@ -1,0 +1,142 @@
+<ion-header>
+  <app-header></app-header>
+  <!--  <ion-toolbar color="default" mode="ios">
+    <ion-img slot="start" class="imagem" [src]="logo"></ion-img>
+    <ion-title>
+      EYE-T
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="getLogout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content *ngFor='let user of users'>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Buscando...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-card *ngIf="user.user!=null">
+    <form [formGroup]="validations_form" (ngSubmit)="onSubmit()" id="perfil-form" novalidate>
+      <ion-list>
+        <!-- *ngFor='let user of users' -->
+        <ion-input type="text" formControlName="id" [value]="[user.user.id]" hidden></ion-input>
+
+        <ion-item id="perfil-nome">
+          <ion-label position="stacked" color="primary">
+            <ion-icon ios="ios-person" md="md-person"></ion-icon>
+            Nome
+          </ion-label>
+          <ion-input type="text" formControlName="nome" [value]="[user.user.nome]"></ion-input>
+        </ion-item>
+
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.nome">
+            <div class="error-message"
+              *ngIf="validations_form.get('nome').hasError(validation.type) && (validations_form.get('nome').dirty || validations_form.get('nome').touched||validations_form.get('nome').untouched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item id="perfil-nick">
+          <ion-label position="stacked" color="primary">
+            <ion-icon ios="ios-person" md="md-person"></ion-icon>
+            Apelido
+          </ion-label>
+          <ion-input type="text" formControlName="nick" [value]="[user.user.nick]"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.nick">
+            <div class="error-message"
+              *ngIf="validations_form.get('nick').hasError(validation.type) && (validations_form.get('nick').dirty || validations_form.get('nick').touched||validations_form.get('nick').untouched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item id="perfil-email">
+          <ion-label position="stacked" color="primary">
+            <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+            E-mail
+          </ion-label>
+          <ion-input type="email" formControlName="email" [value]="[user.user.email]"></ion-input>
+        </ion-item>
+
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.email">
+            <div class="error-message"
+              *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched||validations_form.get('email').untouched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-item id="perfil-crm">
+          <ion-label position="stacked" color="primary">
+            <ion-icon ios="ios-card" md="md-card"></ion-icon>
+            CRM
+          </ion-label>
+          <ion-input type="text" formControlName="crm" [value]="[user.user.crm]"></ion-input>
+        </ion-item>
+
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.crm">
+            <div class="error-message"
+              *ngIf="validations_form.get('crm').hasError(validation.type) && (validations_form.get('crm').dirty || validations_form.get('crm').touched||validations_form.get('crm').untouched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- Senha -->
+        <ion-item>
+          <ion-label position="stacked" color="primary">
+            <ion-icon ios="ios-lock" md="md-lock"></ion-icon>
+            Senha
+          </ion-label>
+          <ion-input id="senha" type="password" formControlName="senha">
+          </ion-input>
+        </ion-item>
+
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.senha">
+            <div class="error-message"
+              *ngIf="validations_form.get('senha').hasError(validation.type) && (validations_form.get('senha').dirty || validations_form.get('senha').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-button color="primary" class="submit-btn" expand="full" type="submit" [disabled]="!validations_form.valid">
+          Atualizar
+        </ion-button>
+      </ion-list>
+    </form>
+  </ion-card>
+  <ion-card *ngIf="user.user==null" class="centro">
+    <!-- Skeleton -->
+    <div class="ion-padding custom-skeleton">
+      <p>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        <br>
+        <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+        <br>
+        <ion-skeleton-text animated style="width: 95%"></ion-skeleton-text>
+        <br>
+        <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+        <br>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </p>
+      <ion-icon size="large" name="arrow-dropdown-circle"></ion-icon>
+      <br>
+      <ion-text color="primary">Puxe para baixo!</ion-text>
+    </div>
+    <!-- ./Skeleton -->
+  </ion-card>
+  <!-- <p>Valor do formulário: {{validations_form.value | json}}</p>
+  <p>Validation status: {{ validations_form.status }}</p> -->
+</ion-content>

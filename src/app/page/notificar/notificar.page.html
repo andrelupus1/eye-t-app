@@ -1,0 +1,122 @@
+<ion-header>
+  <app-header></app-header>
+  <!-- <ion-button (click)="presentPopover()">Popover Test Notify</ion-button> -->
+  <!-- <app-popover></app-popover> -->
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <!-- <app-popover></app-popover> -->
+    <form [formGroup]="validations_form" (submit)="onSubmit(validations_form.value)">
+      <ng-component *ngIf="users">
+        <ion-input type="text" formControlName="idusuarios" [value]=[users.id] hidden></ion-input>
+        <ion-input type="text" formControlName="email" [value]="users.email" hidden></ion-input>
+        <ion-input type="text" formControlName="observacao" [value]="" hidden></ion-input>
+      </ng-component>
+      <ion-item>
+          <h2>Preencha os dados:</h2>
+        </ion-item>
+      <ion-item>
+        <ion-label position="stacked" color="primary">Doador<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" formControlName="doador"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.doador">
+          <div class="error-message"
+            *ngIf="validations_form.get('doador').hasError(validation.type) && (validations_form.get('doador').dirty || validations_form.get('doador').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Idade<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="number" formControlName="idade" (focusout)="onBlur()"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.idade">
+          <div class="error-message"
+            *ngIf="validations_form.get('idade').hasError(validation.type) && (validations_form.get('idade').dirty || validations_form.get('idade').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Hospital<ion-text color="danger">*</ion-text></ion-label>
+        <ion-select formControlName="idhospital" cancelText="Cancel" okText="OK" placeholder="selecione">
+          <ion-select-option *ngFor="let hospital of hospitais" [value]="hospital.idhospital">{{hospital.idhospital}} -
+            {{hospital.nomeHospital}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.hospital">
+          <div class="error-message"
+            *ngIf="validations_form.get('idhospital').hasError(validation.type) && (validations_form.get('idhospital').dirty || validations_form.get('idhospital').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label position="stacked" color="primary">Registro do Hospital<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" formControlName="registro"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.registro">
+          <div class="error-message"
+            *ngIf="validations_form.get('registro').hasError(validation.type) && (validations_form.get('registro').dirty || validations_form.get('registro').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item id="data-obito">
+        <ion-label position="stacked" color="primary">
+          Hora do Óbito
+          <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <!-- <ion-input type="text" formControlName="data" placeholder="00/00/0000"></ion-input> -->
+        <ion-datetime display-format="DD-MM-YYYY HH:mm" picker-format="DD MM YYYY HH mm" placeholder="Selecione"
+          min="2019-08-01" cancelText="Cancelar" doneText="OK" formControlName="obito" (focusout)="onBlur()">
+        </ion-datetime>
+        <!-- [value]="[user.user.nasc]" -->
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.obito">
+          <div class="error-message"
+            *ngIf="validations_form.get('obito').hasError(validation.type) && (validations_form.get('obito').dirty || validations_form.get('obito').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item id="data-registro">
+        <ion-label position="stacked" color="primary">
+          Data Registro
+        </ion-label>
+        <!-- <ion-input type="text" formControlName="data" placeholder="00/00/0000"></ion-input> -->
+        <ion-datetime display-format="DD-MM-YYYY HH:mm" picker-format="DD MM YYYY HH mm" placeholder="Selecione"
+          min="2019-08-01" cancelText="Cancelar" doneText="OK" formControlName="dataregistro" readonly>
+        </ion-datetime>
+        <!-- [value]="[user.user.nasc]" -->
+      </ion-item>
+      <ion-item-divider><ion-text color="danger">* <small>Obrigatório</small></ion-text></ion-item-divider>
+      <ion-item>
+        <h2>CRITÉRIOS: (marque se afirmativo)</h2>
+      </ion-item>
+      <ion-item *ngFor="let linha of checkbox; let i = index">
+        <p>{{linha.val}}</p>
+        <ion-checkbox slot="end" [checked]="linha.isChecked" [formControlName]="linha.nome"></ion-checkbox>
+      </ion-item>
+      <ion-button color="primary" class="submit-btn" expand="full" type="submit" [disabled]="!validations_form.valid">
+        Notificar</ion-button>
+    </form>
+  </ion-card>
+  <!-- <p>Valor do formulário: {{users | json}}</p> -->
+  <!-- <p>Valor do formulário: {{hospitais | json}}</p> -->
+  <!-- <p>Valor do formulário: {{validations_form.value | json}}</p>
+    <p>Validation status: {{ validations_form.status }}</p>
+    <p>Mensagem: {{formattedMessage}}</p> -->
+
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "eye-t",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

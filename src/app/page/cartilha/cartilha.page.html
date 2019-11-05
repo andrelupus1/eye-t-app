@@ -1,0 +1,56 @@
+<ion-header>
+  <app-header></app-header>
+  <!--   <ion-toolbar color="default" mode="ios">
+    <ion-img slot="start" class="imagem" [src]="logo"></ion-img>
+    <ion-title>
+      EYE-T
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="getLogout()">
+        <ion-icon name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="arrow-dropright"></ion-icon>
+        Leia nossa cartilha!
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- <div *ngIf="cartilha==null||cartilha==''" color="danger"> -->
+      <!-- Skeleton -->
+      <div *ngIf="cartilha==null||cartilha==''" class="ion-padding custom-skeleton">
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 95%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </div>
+      <!-- ./Skeleton -->
+      <div *ngIf="cartilha!=null||cartilha!=''" class="ion-text-justify" [innerHTML]="cartilha"></div>
+    </ion-card-content>
+  </ion-card>
+
+  <!--  <ion-card>
+    <div [innerHTML]="cartilha"></div>
+  </ion-card> -->
+</ion-content>

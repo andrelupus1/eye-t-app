@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/cadastrar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Termos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="arrow-dropright"></ion-icon>
+        Leia nossos Termos
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Skeleton -->
+      <div *ngIf="termos==null||termos==''" class="ion-padding custom-skeleton">
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 95%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </div>
+      <!-- ./Skeleton -->
+      <div *ngIf="termos!=null||termos!=''" class="ion-text-justify" [innerHTML]="termos"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

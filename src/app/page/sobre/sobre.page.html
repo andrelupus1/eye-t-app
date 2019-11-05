@@ -1,0 +1,47 @@
+<ion-header>
+  <app-header></app-header>
+  <!-- <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/login"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Sobre</ion-title>
+    </ion-toolbar> -->
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="arrow-dropright"></ion-icon>
+        Sobre o EYE-T
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- Skeleton -->
+      <div *ngIf="sobre==null||sobre==''" class="ion-padding custom-skeleton">
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 95%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+          <br>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+      </div>
+      <!-- ./Skeleton -->
+      <div *ngIf="sobre!=null||sobre!=''" class="ion-text-justify" [innerHTML]="sobre"></div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

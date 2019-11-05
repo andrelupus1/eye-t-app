@@ -1,0 +1,37 @@
+/* ion-content {
+  //--background: url("../../../assets/img/background.png") repeat 100% 100%;
+  //--background: url("./../../../assets/img/background.png") repeat;
+} */
+page-termos {
+  .select {
+    width: 20%;
+    float: left;
+    border-bottom: 1px solid #ccc;
+  }
+  .num {
+    width: 80%;
+    float: right;
+    top: -41px;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    left: 45px;
+  }
+  .error {
+    color: #ff0000;
+    font-size: 12px;
+  }
+  .imagem {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    margin: 0px 0px 0px 20px;
+  }
+  /* Custom Skeleton Line Height and Margin */
+  .custom-skeleton ion-skeleton-text {
+    line-height: 13px;
+  }
+
+  .custom-skeleton ion-skeleton-text:last-child {
+    margin-bottom: 5px;
+  }
+}

@@ -1,0 +1,69 @@
+<ion-content>
+  <ion-grid class="login-content">
+    <ion-row>
+      <ion-col>
+        <!--  <h1 style="text-align: center;color: antiquewhite">EYE-T</h1> -->
+        <img class="logo" [src]='logo'>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <!-- Form -->
+        <form [formGroup]="validations_form" (ngSubmit)="getLogin()" (keydown.enter)="getLogin()">
+          <ion-list>
+            <ion-item>
+              <!-- <ion-label position="floating" color="primary">E-mail</ion-label> -->
+              <ion-label position="stacked" color="primary">
+                <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+              </ion-label>
+              <ion-input type="text" formControlName="email" placeholder="E-mail"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.email">
+                <div class="error-message"
+                  *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <!-- Senha -->
+            <ion-item>
+              <!-- <ion-label position="floating" color="primary">Senha</ion-label> -->
+              <ion-label position="stacked" color="primary">
+                <ion-icon ios="ios-unlock" md="md-unlock"></ion-icon>
+              </ion-label>
+              <ion-input type="password" formControlName="senha" placeholder="Senha"></ion-input>
+            </ion-item>
+            <div class="validation-errors">
+              <ng-container *ngFor="let validation of validation_messages.senha">
+                <div class="error-message"
+                  *ngIf="validations_form.get('senha').hasError(validation.type) && (validations_form.get('senha').dirty || validations_form.get('senha').touched)">
+                  <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+          </ion-list>
+          <ion-button class="log-in-button" color="danger" class="submit-btn" expand="full" type="submit"
+            [disabled]="!validations_form.valid">
+            Entrar
+          </ion-button>
+          <ion-button color="primary" expand="full" slot="start" routerLink="/cadastrar" routerDirection="forward">
+            Cadastrar
+          </ion-button>
+          <ion-button color="light" expand="full" slot="end" routerLink="/recuperar" routerDirection="forward">
+            Recuperar
+            Senha
+          </ion-button>
+         <!--  <ion-button fill="clear" expand="block" size="small" slot="end" [routerLink]="['/sobre']">
+            Sobre o EYE-T
+          </ion-button> -->
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<!-- <ion-footer class="ion-text-center">
+    <ion-text color="light">
+      <small>EYE-T 1.0.0</small>
+    </ion-text>
+</ion-footer> -->

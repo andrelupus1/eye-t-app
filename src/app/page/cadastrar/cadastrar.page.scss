@@ -1,0 +1,28 @@
+ion-content {
+    //--background: url("../../../assets/img/background.png") repeat 100% 100%;
+    --background: url("./../../../assets/img/background.png") repeat;
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .select {
+    width: 20%;
+    float: left;
+    border-bottom: 1px solid #ccc;
+  }
+  .num {
+    width: 80%;
+    float: right;
+    top: -41px;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    left: 45px;
+  }
+  .error {
+    color: #ff0000;
+    font-size: 12px;
+  }
+}
+

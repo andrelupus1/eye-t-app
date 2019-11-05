@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/login"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Recuperar Senha</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-grid class="login-content">
+      <ion-row>
+        <ion-col>
+        <!--   <h1 style="text-align: center;color: antiquewhite">EYE-T</h1> -->
+          <img class="logo" src='../../assets/img/logo.png'>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <!-- Form -->
+          <form [formGroup]="validations_form" (ngSubmit)="recuperaSenha()" (keydown.enter)="recuperaSenha()">
+            <ion-list>
+              <ion-item>
+                <!-- <ion-label position="floating" color="primary">E-mail</ion-label> -->
+                <ion-label  position="stacked">
+                  <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+                  E-mail
+                </ion-label>
+                <ion-input type="text" formControlName="email" placeholder="E-mail"></ion-input>
+              </ion-item>
+              <div class="validation-errors">
+                <ng-container *ngFor="let validation of validation_messages.email">
+                  <div class="error-message"
+                    *ngIf="validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)">
+                    <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
+                  </div>
+                </ng-container>
+              </div>
+            </ion-list>
+  
+            <ion-button class="log-in-button" color="danger" class="submit-btn" expand="full" type="submit"
+              [disabled]="!validations_form.valid">
+              Recuperar
+            </ion-button>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  <ion-footer>
+    <ion-button color="primary" expand="block" slot="start" routerLink="/cadastrar" routerDirection="forward">Cadastrar
+    </ion-button>
+    <ion-button color="light" expand="block" slot="end" routerLink="/login" routerDirection="forward">Login
+    </ion-button>
+  </ion-footer>

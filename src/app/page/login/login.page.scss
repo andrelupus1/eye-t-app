@@ -1,0 +1,39 @@
+ion-content {
+  //--background: url("../../../assets/img/background.png") repeat 100% 100%;
+  --background: url("./../../../assets/img/background.png") repeat;
+}
+page-login {
+  /*   .logo {
+    display: block; //!important
+    margin-left: auto;  //!important
+    margin-right: auto;  //!important
+    max-width: 200px;  //!important
+    max-height: 200px;  //!important
+    text-align: center;
+    align-items: center; 
+    //padding-top: 40px;
+  } */
+  .login-content {
+    //--background: var(--ion-color-medium-tint);
+    display: flex;
+    align-items: center; /* vertical alignment */
+    justify-content: center; /* horizontal alignment */
+  }
+
+  .log-in-button {
+    margin-top: 40px;
+    font-weight: bold;
+  }
+  .num {
+    width: 80%;
+    float: right;
+    top: -41px;
+    position: relative;
+    border-bottom: 1px solid #ccc;
+    left: 45px;
+  }
+  .error {
+    color: #ff0000;
+    font-size: 12px;
+  }
+}
