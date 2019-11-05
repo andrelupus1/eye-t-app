@@ -1,5 +1,6 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
+// https://stackoverflow.com/questions/49831485/angular-6-and-karma-can-not-load-angular-devkit-build-angular-it-is-not-reg
 
 module.exports = function (config) {
   config.set({
@@ -20,12 +21,16 @@ module.exports = function (config) {
       reports: ['html', 'lcovonly', 'text-summary'],
       fixWebpackSourcePaths: true
     },
+    angularCli: {
+      config: './angular.json',
+      environment: 'dev'
+    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Safari'],
+    browsers: ['Chrome'],
     singleRun: false
   });
 };

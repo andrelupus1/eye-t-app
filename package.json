@@ -30,6 +30,7 @@
     "cordova-ios": "^5.0.1",
     "cordova-sqlite-storage": "^3.3.0",
     "core-js": "^2.5.4",
+    "karma-webpack": "^4.0.2",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
