@@ -7,6 +7,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
+      require('karma-webpack'),
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
@@ -24,6 +25,9 @@ module.exports = function (config) {
     angularCli: {
       config: './angular.json',
       environment: 'dev'
+    },
+    preprocessors: {
+      './src/test.ts': ['webpack']
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
