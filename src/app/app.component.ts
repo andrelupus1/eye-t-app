@@ -67,12 +67,13 @@ export class AppComponent {
       .then(res => {
         if (res != null) {
           this.logado = true;
+          // loading.dismiss();
         } else {
           this.logado = false;
-          this.islogg();
+          // this.islogg();
         }
-        // loading.dismiss();
+        loading.dismiss();
       });
-      // console.log(this.logado);
+    console.log(this.logado);
   }
 }
